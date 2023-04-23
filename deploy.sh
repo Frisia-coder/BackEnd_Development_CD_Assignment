@@ -8,4 +8,4 @@ rsync -avz --delete --exclude '.git*' ./ Frisia-coder@104.248.95.135:/var/www/my
 ssh Frisia-coder@104.248.95.135 "sudo service myapp restart"
 
 # Starts pytest for myapp file
-pytest --cov=myapp tests/
+pytest --cov=myapp test/
