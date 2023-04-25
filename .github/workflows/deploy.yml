@@ -36,11 +36,10 @@ jobs:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
-        script: |
-        # Upload files to server
-          ssh root@104.248.95.135 "mkdir -p /var/www/myapp"
-          rsync -avz --delete --exclude '.git*' ./ root@104.248.95.135:/var/www/myapp/
-
-        # Restart server
-          ssh root@104.248.95.135 "sudo service myapp restart"
-    
+        
+    - name: Checkout Repository
+      uses: actions/checkout@master
+    - name: Run GitHub File Sync
+      uses: BetaHuhn/repo-file-sync-action@v1
+      with:
+          GH_PAT: ${{ secrets.GH_PAT }}  
