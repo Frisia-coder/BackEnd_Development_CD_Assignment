@@ -28,6 +28,12 @@ jobs:
       run: 
         pip install pytest
         pytest
+        
+    - name: Deploy
+      run: |
+       echo "Deploying"
+       # Voeg hier de inhoud van deploy.sh in
+
       
     - name: Deploy
       if: ${{ success() }}
