@@ -36,15 +36,3 @@ jobs:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
-    
-    - name: Deploy 
-      run: |
-       echo "Deploying"
-       
-       #!/bin/sh
-
-       ssh root@104.248.95.135 "sudo mkdir -p /var/www/myapp"
-       rsync -avz --delete --exclude '.git*' ./ root@104.248.95.135:/var/www/myapp/
-
-       # Restart server
-       ssh root@104.248.95.135 "sudo service myapp restart"
