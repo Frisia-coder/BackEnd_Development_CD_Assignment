@@ -36,10 +36,7 @@ jobs:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
-        
-    - name: Checkout Repository
-      uses: actions/checkout@master
-    - name: Run GitHub File Sync
-      uses: BetaHuhn/repo-file-sync-action@v1
-      with:
-          GH_PAT: ${{ secrets.GH_PAT }}  
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Deploy to production
+      run: ./deploy.sh 
