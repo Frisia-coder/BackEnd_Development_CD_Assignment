@@ -28,14 +28,18 @@ jobs:
       run: 
         pip install pytest
         pytest
-      
-    - name: Deploy
+        
+    - name: Connect to server
       if: ${{ success() }}
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
+        
         script: |
-          chmod +x deploy.sh
-          ./deploy.sh
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Deploy to production
+      run: chmod +x deploy.sh
+           ./deploy.sh 
