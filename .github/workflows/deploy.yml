@@ -36,6 +36,10 @@ jobs:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
+        
+        script: |
+          chmod +x deploy.sh
+          ./deploy.sh
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Deploy to production
