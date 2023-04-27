@@ -38,7 +38,7 @@ jobs:
         password: ${{ secrets.DEPLOY_PASSWORD }}
         
         script: |
-    - name: Checkout code
+    - name: Check code
       uses: actions/checkout@v2
     - name: Deploy to production
       run: chmod +x deploy.sh
