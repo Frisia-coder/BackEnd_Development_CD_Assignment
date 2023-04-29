@@ -40,7 +40,8 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_PASSWORD }}
         script: |
+           git config --global --add safe.directory /var/www/myapp
            cd /var/www/myapp
            git pull origin main
-           sudo systemctl restart app.service
+           sudo systemctl restart myapp
 
