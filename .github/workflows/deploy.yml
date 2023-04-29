@@ -43,5 +43,5 @@ jobs:
            git config --global --add safe.directory /var/www/myapp
            cd /var/www/myapp
            git pull origin main
-           sudo service myapp restart
+           sudo systemctl restart nginx
 
